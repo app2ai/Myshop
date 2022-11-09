@@ -3,8 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/shoppyLoginFragment">
+    app:startDestination="@id/shoppyDashboardFragment">
 
+    <fragment
+        android:id="@+id/shoppyDashboardFragment"
+        android:name="com.rtech.myshoppy.ui.dashboard.ShoppyDashboardFragment"
+        android:label="fragment_shoppy_dashboard"
+        tools:layout="@layout/fragment_shoppy_dashboard" />
     <fragment
         android:id="@+id/shoppyLoginFragment"
         android:name="com.rtech.myshoppy.ui.login.ShoppyLoginFragment"
@@ -13,11 +18,6 @@
             android:id="@+id/action_shoppyLoginFragment_to_shoppyRegisterFragment"
             app:destination="@id/shoppyRegisterFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/shoppyDashboardFragment"
-        android:name="com.rtech.myshoppy.ui.dashboard.ShoppyDashboardFragment"
-        android:label="fragment_shoppy_dashboard"
-        tools:layout="@layout/fragment_shoppy_dashboard" />
     <fragment
         android:id="@+id/shoppyRegisterFragment"
         android:name="com.rtech.myshoppy.ui.register.ShoppyRegisterFragment"
