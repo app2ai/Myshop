@@ -8,8 +8,12 @@
     <fragment
         android:id="@+id/shoppyDashboardFragment"
         android:name="com.rtech.myshoppy.ui.dashboard.ShoppyDashboardFragment"
-        android:label="fragment_shoppy_dashboard"
-        tools:layout="@layout/fragment_shoppy_dashboard" />
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_shoppy_dashboard" >
+        <action
+            android:id="@+id/action_shoppyDashboardFragment_to_shoppyLoginFragment"
+            app:destination="@id/shoppyLoginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/shoppyLoginFragment"
         android:name="com.rtech.myshoppy.ui.login.ShoppyLoginFragment"
