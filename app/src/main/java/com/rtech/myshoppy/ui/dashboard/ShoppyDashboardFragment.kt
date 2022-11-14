@@ -13,7 +13,6 @@ class ShoppyDashboardFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_shoppy_dashboard, container, false)
@@ -23,7 +22,7 @@ class ShoppyDashboardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         view.findViewById<Button>(R.id.btnGoToLogin).setOnClickListener {
             findNavController().navigate(R.id.shoppyLoginFragment, Bundle().apply {
-                this.putString("title", "Login to Application")
+                this.putString("title", "Login Page View")
             })
         }
     }
