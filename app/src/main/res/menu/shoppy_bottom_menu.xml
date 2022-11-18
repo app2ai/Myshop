@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/dashboard"
+        android:title="@string/shoppy_menu_dashboard"
+        android:icon="@drawable/ic_dashboard"
+        app:showAsAction="ifRoom"
+        android:tooltipText="@string/shoppy_menu_dashboard"
+        />
+    <item android:id="@+id/cart"
+        android:title="@string/shoppy_menu_my_cart"
+        android:icon="@drawable/ic_goods_cart"
+        app:showAsAction="ifRoom"
+        android:tooltipText="@string/shoppy_menu_my_cart"
+        />
+</menu>

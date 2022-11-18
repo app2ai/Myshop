@@ -3,4 +3,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="shoppy_buy_button">Buy</string>
+    <string name="shoppy_menu_dashboard">Dashboard</string>
+    <string name="shoppy_menu_my_cart">My cart</string>
 </resources>
