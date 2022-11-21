@@ -5,4 +5,6 @@
     <string name="shoppy_buy_button">Buy</string>
     <string name="shoppy_menu_dashboard">Dashboard</string>
     <string name="shoppy_menu_my_cart">My cart</string>
+    <string name="shoppy_menu_account">Account</string>
+    <string name="shoppy_menu_share">Share</string>
 </resources>

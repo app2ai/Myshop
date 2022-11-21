@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/shoppyLoginFragment"
         android:name="com.rtech.myshoppy.ui.login.ShoppyLoginFragment"
-        android:label="ShoppyLoginFragment" >
+        android:label="Login" >
         <action
             android:id="@+id/action_shoppyLoginFragment_to_shoppyRegisterFragment"
             app:destination="@id/shoppyRegisterFragment" />
@@ -25,6 +25,21 @@
     <fragment
         android:id="@+id/shoppyRegisterFragment"
         android:name="com.rtech.myshoppy.ui.register.ShoppyRegisterFragment"
-        android:label="fragment_shoppy_register"
+        android:label="User Registration"
         tools:layout="@layout/fragment_shoppy_register" />
+    <fragment
+        android:id="@+id/shoppyAccountFragment"
+        android:name="com.rtech.myshoppy.ui.account.ShoppyAccountFragment"
+        android:label="My Account"
+        tools:layout="@layout/fragment_account" />
+    <fragment
+        android:id="@+id/shoppyOrderFragment"
+        android:name="com.rtech.myshoppy.ui.orders.ShoppyOrderFragment"
+        android:label="My Order"
+        tools:layout="@layout/fragment_order" />
+    <fragment
+        android:id="@+id/shoppyCartFragment"
+        android:name="com.rtech.myshoppy.ui.cart.ShoppyCartFragment"
+        android:label="My Cart"
+        tools:layout="@layout/fragment_shoppy_cart" />
 </navigation>
