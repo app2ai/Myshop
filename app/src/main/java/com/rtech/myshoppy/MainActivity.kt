@@ -3,6 +3,7 @@ package com.rtech.myshoppy
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
@@ -37,13 +38,19 @@ class MainActivity : AppCompatActivity() {
         myNavController.addOnDestinationChangedListener { controller, destination, arguments ->
             when(destination.id) {
                 R.id.shoppyDashboardFragment -> {
-                    Log.d("VTAG", "onCreate: shoppyDashboardFragment")
+                    binding.shoppyBottomNavigationView.visibility = View.VISIBLE
                 }
                 R.id.shoppyCartFragment -> {
-                    Log.d("VTAG", "onCreate: shoppyCartFragment")
+                    binding.shoppyBottomNavigationView.visibility = View.VISIBLE
                 }
                 R.id.shoppyAccountFragment -> {
-                    Log.d("VTAG", "onCreate: shoppyAccountFragment")
+                    binding.shoppyBottomNavigationView.visibility = View.VISIBLE
+                }
+                R.id.shoppyLoginFragment -> {
+                    binding.shoppyBottomNavigationView.visibility = View.GONE
+                }
+                R.id.shoppyRegisterFragment -> {
+                    binding.shoppyBottomNavigationView.visibility = View.GONE
                 }
             }
         }
