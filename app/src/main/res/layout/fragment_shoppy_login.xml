@@ -7,35 +7,27 @@
     android:gravity="center"
     tools:context=".ui.login.ShoppyLoginFragment">
     <TextView
-        android:id="@+id/txtHeading"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:gravity="center"
-        android:layout_margin="10dp"
-        android:text="@string/app_name" />
-    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:gravity="center"
         android:textColor="@color/black"
         android:layout_margin="10dp"
-        android:text="Login Form" />
+        android:text="@string/app_name" />
 
     <EditText
         android:id="@+id/editUserName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:hint="UserName"
+        android:hint="@string/shoppy_hint_enter_username"
         />
     <EditText
         android:id="@+id/editPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:hint="Password"
+        android:hint="@string/shoppy_hint_enter_password"
         />
     <TextView
         android:id="@+id/txtForgot"
