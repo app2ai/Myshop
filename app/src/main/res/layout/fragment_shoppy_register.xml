@@ -9,19 +9,12 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textColor="@color/black"
-        android:gravity="center"
-        android:layout_margin="20dp"
-        android:text="Registration Form" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:textSize="15sp"
         android:layout_marginLeft="10dp"
         android:text="Name" />
 
     <EditText
+        android:id="@+id/etUserName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -31,11 +24,13 @@
         android:layout_height="wrap_content"
         android:textSize="15sp"
         android:layout_marginLeft="10dp"
-        android:text="Date of Birth" />
+        android:text="Age" />
 
     <EditText
+        android:id="@+id/etAge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="number"
         android:layout_marginLeft="10dp"
         />
     <TextView
@@ -45,9 +40,11 @@
         android:textSize="15sp"
         android:text="Mobile Number" />
     <EditText
+        android:id="@+id/etContact"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
+        android:maxLength="10"
         android:inputType="phone"
         />
     <TextView
@@ -57,8 +54,10 @@
         android:textSize="15sp"
         android:text="Password" />
     <EditText
+        android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="textPassword"
         android:layout_marginLeft="10dp"
         />
     <TextView
@@ -68,12 +67,14 @@
         android:layout_marginLeft="10dp"
         android:text="Confirm Password" />
     <EditText
+        android:id="@+id/etConfPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         />
 
     <Button
+        android:id="@+id/btnRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Register"
