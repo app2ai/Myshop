@@ -34,6 +34,8 @@ class ShoppyRegisterFragment : Fragment(), TextWatcher {
     private fun initialiseView() {
         binding.etUserName.addTextChangedListener(this)
         binding.etContact.addTextChangedListener(this)
+        binding.etPassword.addTextChangedListener(this)
+        binding.etConfPassword.addTextChangedListener(this)
     }
 
     private fun observeData() {
@@ -54,6 +56,10 @@ class ShoppyRegisterFragment : Fragment(), TextWatcher {
             viewModel.checkName(p0.toString())
         } else if (binding.etContact.isFocusable) {
             viewModel.checkMobileNumber(p0.toString())
+        } else if(binding.etPassword.isFocusable){
+            viewModel.checkPassword(p0.toString())
+        } else if(binding.etConfPassword.isFocusable){
+            viewModel.checkConfPassword(p0.toString())
         }
     }
 
