@@ -9,4 +9,14 @@
     <string name="shoppy_menu_share">Share</string>
     <string name="shoppy_hint_enter_password">Enter password</string>
     <string name="shoppy_hint_enter_username">Enter username</string>
+    <string name="shoppy_button_login">Login</string>
+    <string name="shoppy_text_signup">SignUp</string>
+    <string name="shoppy_text_forgotpassword">Forgot Paaword?</string>
+    <string name="shoppy_text_registerform">Registration Form</string>
+    <string name="shoppy_text_name">Name</string>
+    <string name="shoppy_text_dob">Date of Birth</string>
+    <string name="shoppy_text_mobileNo">Mobile Number</string>
+    <string name="shoppy_text_password">Password</string>
+    <string name="shoppy_text_confirmpassword">Confirm Password</string>
+    <string name="shoppy_button_register">Register</string>
 </resources>

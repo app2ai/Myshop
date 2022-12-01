@@ -13,15 +13,16 @@
         android:textColor="@color/black"
         android:gravity="center"
         android:layout_margin="20dp"
-        android:text="Registration Form" />
+        android:text="@string/shoppy_text_registerform" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="15sp"
         android:layout_marginLeft="10dp"
-        android:text="Name" />
+        android:text="@string/shoppy_text_name" />
 
     <EditText
+        android:id="@+id/editName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -31,9 +32,10 @@
         android:layout_height="wrap_content"
         android:textSize="15sp"
         android:layout_marginLeft="10dp"
-        android:text="Date of Birth" />
+        android:text="@string/shoppy_text_dob" />
 
     <EditText
+        android:id="@+id/editdateOfBirth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -43,8 +45,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="15sp"
-        android:text="Mobile Number" />
+        android:text="@string/shoppy_text_mobileNo" />
     <EditText
+        android:id="@+id/editMobileNo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -55,8 +58,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="15sp"
-        android:text="Password" />
+        android:text="@string/shoppy_text_password" />
     <EditText
+        android:id="@+id/editPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -66,17 +70,19 @@
         android:layout_height="wrap_content"
         android:textSize="15sp"
         android:layout_marginLeft="10dp"
-        android:text="Confirm Password" />
+        android:text="@string/shoppy_text_confirmpassword" />
     <EditText
+        android:id="@+id/editConfmPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         />
 
     <Button
+        android:id="@+id/btnRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Register"
+        android:text="@string/shoppy_button_register"
         android:layout_margin="10dp"
         />
 

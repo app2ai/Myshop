@@ -7,15 +7,47 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.rtech.myshoppy.R
+import com.rtech.myshoppy.adapter.Dashboard_CardAdapter
+import com.rtech.myshoppy.databinding.FragmentShoppyDashboardBinding
+import com.rtech.myshoppy.model.CardModel
 
 class ShoppyDashboardFragment : Fragment() {
+    private var _binding: FragmentShoppyDashboardBinding? = null
+    private val binding get() = _binding!!
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_shoppy_dashboard, container, false)
+        _binding = FragmentShoppyDashboardBinding.inflate(inflater, container, false)
+        val view = binding.root
+        setupRecyclerView()
+        return view
+    }
+
+    private fun setupRecyclerView() {
+        binding.dashboardRecyclerView.apply {
+            layoutManager= GridLayoutManager(context,2)
+
+            adapter = Dashboard_CardAdapter(createCardModel()) { cardModel, position ->
+                }
+        }
+
+    }
+
+    private fun createCardModel(): ArrayList<CardModel> {
+        return arrayListOf<CardModel>(
+            CardModel(R.drawable.apple_watch," Apple Watch"),
+            CardModel(R.drawable.apple_watch,"Apple Watch Series 5 "),
+            CardModel(R.drawable.apple_watch,"Apple Watch Series 6"),
+            CardModel(R.drawable.apple_watch,"Apple Watch Series 6"),
+            CardModel(R.drawable.apple_watch,"Apple Watch Series 6")
+
+        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
