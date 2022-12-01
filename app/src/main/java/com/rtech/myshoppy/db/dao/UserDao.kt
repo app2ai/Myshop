@@ -7,5 +7,5 @@ import com.rtech.myshoppy.db.entities.UserDetailsModel
 @Dao
 interface UserDao {
     @Insert
-    fun addUser(user: UserDetailsModel)
+    suspend fun addUser(user: UserDetailsModel)
 }

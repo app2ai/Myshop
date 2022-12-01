@@ -8,7 +8,7 @@ data class UserDetailsModel(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     var uname: String,
-    var age: Int,
+    var age: String,
     var mobile: String,
     var password: String
 )
