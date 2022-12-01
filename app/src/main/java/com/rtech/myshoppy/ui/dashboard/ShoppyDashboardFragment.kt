@@ -14,8 +14,7 @@ import com.rtech.myshoppy.databinding.FragmentShoppyDashboardBinding
 import com.rtech.myshoppy.model.CardModel
 
 class ShoppyDashboardFragment : Fragment() {
-    private var _binding: FragmentShoppyDashboardBinding? = null
-    private val binding get() = _binding!!
+    private  lateinit var binding: FragmentShoppyDashboardBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,11 +22,11 @@ class ShoppyDashboardFragment : Fragment() {
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
-        _binding = FragmentShoppyDashboardBinding.inflate(inflater, container, false)
-        val view = binding.root
+        binding = FragmentShoppyDashboardBinding.inflate(inflater, container, false)
         setupRecyclerView()
-        return view
-    }
+        return binding.root
+
+       }
 
     private fun setupRecyclerView() {
         binding.dashboardRecyclerView.apply {
