@@ -7,9 +7,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.rtech.myshoppy.databinding.FragmentShoppyRegisterBinding
 import com.rtech.myshoppy.db.entities.UserDetailsModel
+import com.rtech.myshoppy.utils.clear
 
 class ShoppyRegisterFragment : Fragment(), TextWatcher {
     private lateinit var binding: FragmentShoppyRegisterBinding
@@ -66,6 +68,21 @@ class ShoppyRegisterFragment : Fragment(), TextWatcher {
             if (!it)
                 binding.etConfPassword.error = "Password mismatch"
         }
+        viewModel.savingLiveData.observe(viewLifecycleOwner) {
+            Toast.makeText(context, "User registration ID: $it", Toast.LENGTH_LONG).show()
+            clearData()
+        }
+    }
+
+    private fun clearData() {
+        binding.etUserName.apply {
+            clear()
+            requestFocus()
+        }
+        binding.etAge.clear()
+        binding.etContact.clear()
+        binding.etPassword.clear()
+        binding.etConfPassword.clear()
     }
 
     override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) { }
