@@ -17,10 +17,6 @@ class ShoppyRegisterFragment : Fragment(), TextWatcher {
     private lateinit var binding: FragmentShoppyRegisterBinding
     private lateinit var viewModel: ShoppyRegisterViewModel
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View {
         binding = FragmentShoppyRegisterBinding.inflate(inflater, container, false)
@@ -43,10 +39,10 @@ class ShoppyRegisterFragment : Fragment(), TextWatcher {
             context?.let { it1 ->
                 viewModel.addUser(
                     UserDetailsModel(
-                        uname = binding.etUserName.toString(),
-                        age = binding.etAge.toString(),
-                        mobile = binding.etContact.toString(),
-                        password = binding.etPassword.toString()
+                        uname = binding.etUserName.text.toString(),
+                        age = binding.etAge.text.toString(),
+                        mobile = binding.etContact.text.toString(),
+                        password = binding.etPassword.text.toString()
                     ),
                     it1
                 )

@@ -12,3 +12,8 @@ data class UserDetailsModel(
     val mobile: String,
     val password: String
 )
+
+data class LoginDetails(
+    val mobile: String,
+    val password: String
+)

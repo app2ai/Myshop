@@ -8,5 +8,5 @@
     <string name="shoppy_menu_account">Account</string>
     <string name="shoppy_menu_share">Share</string>
     <string name="shoppy_hint_enter_password">Enter password</string>
-    <string name="shoppy_hint_enter_username">Enter username</string>
+    <string name="shoppy_hint_enter_username">Enter mobile</string>
 </resources>
