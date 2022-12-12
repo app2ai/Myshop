@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.rtech.myshoppy.R
+import com.rtech.myshoppy.cache.CachePref
 import com.rtech.myshoppy.databinding.FragmentShoppyLoginBinding
 
 class ShoppyLoginFragment : Fragment() {
@@ -54,7 +55,12 @@ class ShoppyLoginFragment : Fragment() {
                 }
                 is LoginSuccess -> {
                     Toast.makeText(context, "Hi ${it.obj.uname}, Login successful", Toast.LENGTH_LONG).show()
-                    // Save data in Shared preference
+                    // Save login flag to true once user logged in successfully
+                    it.obj.isLogin = true
+                    viewModel.updateLoginStatus(it.obj, requireContext())
+                    val sp = CachePref.getCacheInstance(requireContext())
+                    val editor = CachePref.getEditor(sp)
+                    CachePref.setUserIdToCache(editor, it.obj.id)
                 }
             }
         }

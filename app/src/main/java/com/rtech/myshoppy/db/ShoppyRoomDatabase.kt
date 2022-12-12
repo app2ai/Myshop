@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.rtech.myshoppy.db.dao.UserDao
 import com.rtech.myshoppy.db.entities.UserDetailsModel
 
-@Database(entities = [UserDetailsModel::class], version = 1, exportSchema = false)
+@Database(entities = [UserDetailsModel::class], version = 2, exportSchema = false)
 abstract class ShoppyRoomDatabase : RoomDatabase() {
 
     abstract fun userDao(): UserDao

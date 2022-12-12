@@ -14,6 +14,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="16dp"
-        android:text="@string/shoppy_buy_button" />
+        android:text="@string/btn_login" />
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnGoToLogin"
+        android:layout_marginTop="24dp"
+        android:text="@string/btn_logout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

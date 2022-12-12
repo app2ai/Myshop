@@ -10,7 +10,8 @@ data class UserDetailsModel(
     val uname: String,
     val age: String,
     val mobile: String,
-    val password: String
+    val password: String,
+    var isLogin: Boolean = false
 )
 
 data class LoginDetails(
