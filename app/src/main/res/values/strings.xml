@@ -11,4 +11,5 @@
     <string name="shoppy_hint_enter_username">Enter mobile</string>
     <string name="btn_login">Login</string>
     <string name="btn_logout">Logout</string>
+    <string name="click_here_to_login_in_the_app">Click here to login in the app</string>
 </resources>

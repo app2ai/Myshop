@@ -8,13 +8,14 @@ import androidx.lifecycle.viewModelScope
 import com.rtech.myshoppy.cache.CachePref
 import com.rtech.myshoppy.db.ShoppyRoomDatabase
 import com.rtech.myshoppy.db.entities.UserDetailsModel
+import com.rtech.myshoppy.utils.SingleLiveDataEvent
 import kotlinx.coroutines.launch
 
 class ShoppyLoginViewModel : ViewModel() {
     private var _userLiveData = MutableLiveData<UserLoginState>()
     val userLiveData: LiveData<UserLoginState> = _userLiveData
 
-    private var _userLogoutLiveData = MutableLiveData<Boolean>()
+    private var _userLogoutLiveData = SingleLiveDataEvent<Boolean>()
     val userLogoutLiveData: LiveData<Boolean> = _userLogoutLiveData
 
     fun loginUserFromDb(username: String, password: String, context: Context) {
