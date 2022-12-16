@@ -5,15 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.rtech.myshoppy.R
+import com.rtech.myshoppy.databinding.FragmentShoppyCartBinding
+
 class ShoppyCartFragment : Fragment() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private lateinit var binding: FragmentShoppyCartBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_shoppy_cart, container, false)
+        savedInstanceState: Bundle?): View {
+        binding = FragmentShoppyCartBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
