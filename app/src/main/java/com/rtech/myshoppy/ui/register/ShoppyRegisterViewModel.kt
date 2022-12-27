@@ -40,8 +40,8 @@ class ShoppyRegisterViewModel: ViewModel() {
     }
 
     fun addUser(obj: UserDetailsModel, context: Context) {
-        val db = ShoppyRoomDatabase.getDbInstance(context)
         viewModelScope.launch {
+            val db = ShoppyRoomDatabase.getDbInstance(context, this)
             val id = db.userDao().addUser(obj)
             _savingLiveData.value = id
         }

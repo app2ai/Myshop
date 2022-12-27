@@ -20,7 +20,7 @@ class ShoppyLoginViewModel : ViewModel() {
 
     fun loginUserFromDb(username: String, password: String, context: Context) {
         viewModelScope.launch {
-            val db = ShoppyRoomDatabase.getDbInstance(context).userDao()
+            val db = ShoppyRoomDatabase.getDbInstance(context, this).userDao()
             val userdata = db.loginUser(username, password)
             if (userdata == null) {
                 _userLiveData.value = LoginFailed
@@ -32,14 +32,14 @@ class ShoppyLoginViewModel : ViewModel() {
 
     fun updateLoginStatus(userdata: UserDetailsModel, context: Context) {
         viewModelScope.launch {
-            val db = ShoppyRoomDatabase.getDbInstance(context).userDao()
+            val db = ShoppyRoomDatabase.getDbInstance(context, this).userDao()
             db.updateLoginStatue(userdata)
         }
     }
 
     fun logoutUser(context: Context) {
         viewModelScope.launch {
-            val db = ShoppyRoomDatabase.getDbInstance(context).userDao()
+            val db = ShoppyRoomDatabase.getDbInstance(context, this).userDao()
             val sp = CachePref.getCacheInstance(context)
             val affectedRows = db.logoutUser(CachePref.getUserIdFromCache(sp))
             _userLogoutLiveData.value = affectedRows >= 1
