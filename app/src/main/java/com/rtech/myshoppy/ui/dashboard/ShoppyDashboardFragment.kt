@@ -7,12 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import com.rtech.myshoppy.databinding.FragmentShoppyDashboardBinding
+import com.rtech.myshoppy.db.entities.ProductDetailsModel
 import com.rtech.myshoppy.ui.login.ShoppyLoginViewModel
 
 class ShoppyDashboardFragment : Fragment() {
     private lateinit var binding: FragmentShoppyDashboardBinding
     private lateinit var viewModel: ShoppyDashboardViewModel
+    private lateinit var adapter: Dashboard_ProductCardAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View {
@@ -26,11 +29,25 @@ class ShoppyDashboardFragment : Fragment() {
         viewModel.getAllProductsFromDb(requireContext())
 
         observeData()
+        setupRecyclerView()
     }
 
     private fun observeData() {
         viewModel.productsLiveData.observe(viewLifecycleOwner) {
             Log.d("DASH_TAG", "observeData: ${it}")
+            binding.dashboardRecyclerView.apply {
+                layoutManager= GridLayoutManager(context,2)
+
+            }
+
         }
     }
+    private fun setupRecyclerView() {
+        binding.dashboardRecyclerView.apply {
+            layoutManager= GridLayoutManager(context,2)
+
+        }
+
+    }
+
 }
