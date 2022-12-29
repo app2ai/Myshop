@@ -15,7 +15,6 @@ import com.rtech.myshoppy.ui.login.ShoppyLoginViewModel
 class ShoppyDashboardFragment : Fragment() {
     private lateinit var binding: FragmentShoppyDashboardBinding
     private lateinit var viewModel: ShoppyDashboardViewModel
-    private lateinit var adapter: Dashboard_ProductCardAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View {
@@ -29,25 +28,18 @@ class ShoppyDashboardFragment : Fragment() {
         viewModel.getAllProductsFromDb(requireContext())
 
         observeData()
-        setupRecyclerView()
     }
 
     private fun observeData() {
         viewModel.productsLiveData.observe(viewLifecycleOwner) {
-            Log.d("DASH_TAG", "observeData: ${it}")
-            binding.dashboardRecyclerView.apply {
-                layoutManager= GridLayoutManager(context,2)
-
-            }
-
+            setupRecyclerView(it)
         }
     }
-    private fun setupRecyclerView() {
+
+    private fun setupRecyclerView(list: List<ProductDetailsModel>) {
         binding.dashboardRecyclerView.apply {
             layoutManager= GridLayoutManager(context,2)
-
+            adapter = Dashboard_ProductCardAdapter(list, context)
         }
-
     }
-
 }
