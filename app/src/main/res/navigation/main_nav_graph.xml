@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_shoppyDashboardFragment_to_shoppyLoginFragment"
             app:destination="@id/shoppyLoginFragment" />
+        <action
+            android:id="@+id/action_shoppyDashboardFragment_to_shoppyProductDetailsFragment"
+            app:destination="@id/shoppyProductDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/shoppyLoginFragment"
@@ -42,4 +45,8 @@
         android:name="com.rtech.myshoppy.ui.cart.ShoppyCartFragment"
         android:label="My Cart"
         tools:layout="@layout/fragment_shoppy_cart" />
+    <fragment
+        android:id="@+id/shoppyProductDetailsFragment"
+        android:name="com.rtech.myshoppy.ui.product.ShoppyProductDetailsFragment"
+        android:label="ShoppyProductDetailsFragment" />
 </navigation>

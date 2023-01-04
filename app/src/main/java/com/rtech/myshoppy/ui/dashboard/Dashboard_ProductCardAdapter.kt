@@ -7,9 +7,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rtech.myshoppy.databinding.ShoppyDashboardProductcardBinding
 import com.rtech.myshoppy.db.entities.ProductDetailsModel
 
-class Dashboard_ProductCardAdapter(var productDetailList: List<ProductDetailsModel>,
-    private val context: Context) :
-    RecyclerView.Adapter<Dashboard_ProductCardAdapter.ViewHolder>() {
+class Dashboard_ProductCardAdapter(
+    var productDetailList: List<ProductDetailsModel>,
+    var listener: ProductClickListener
+) : RecyclerView.Adapter<Dashboard_ProductCardAdapter.ViewHolder>() {
+
+    var mlistener: ProductClickListener? = null
+    init {
+        mlistener = listener
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = ShoppyDashboardProductcardBinding.inflate(
@@ -28,12 +34,20 @@ class Dashboard_ProductCardAdapter(var productDetailList: List<ProductDetailsMod
         return productDetailList.size
     }
 
-    class ViewHolder(var itemBinding: ShoppyDashboardProductcardBinding) :
+    inner class ViewHolder(var itemBinding: ShoppyDashboardProductcardBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
+
         fun bindItem(productModel: ProductDetailsModel) {
             itemBinding.textName.text = productModel.productName
             itemBinding.productRating.rating = (productModel.rating).toFloat()
             itemBinding.textPrice.text = productModel.productDesc
+            itemBinding.root.setOnClickListener {
+                listener?.onProductClick(productModel.id)
+            }
         }
+    }
+
+    interface ProductClickListener {
+        fun onProductClick(productId: Int)
     }
 }

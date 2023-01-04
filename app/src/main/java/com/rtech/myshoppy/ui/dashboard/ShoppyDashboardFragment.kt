@@ -6,13 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.rtech.myshoppy.R
 import com.rtech.myshoppy.databinding.FragmentShoppyDashboardBinding
 import com.rtech.myshoppy.db.entities.ProductDetailsModel
 import com.rtech.myshoppy.ui.login.ShoppyLoginViewModel
 
-class ShoppyDashboardFragment : Fragment() {
+class ShoppyDashboardFragment : Fragment(), Dashboard_ProductCardAdapter.ProductClickListener {
     private lateinit var binding: FragmentShoppyDashboardBinding
     private lateinit var viewModel: ShoppyDashboardViewModel
 
@@ -39,7 +42,14 @@ class ShoppyDashboardFragment : Fragment() {
     private fun setupRecyclerView(list: List<ProductDetailsModel>) {
         binding.dashboardRecyclerView.apply {
             layoutManager= GridLayoutManager(context,2)
-            adapter = Dashboard_ProductCardAdapter(list, context)
+            adapter = Dashboard_ProductCardAdapter(list, this@ShoppyDashboardFragment)
         }
+    }
+
+    override fun onProductClick(productId: Int) {
+        findNavController().navigate(
+            R.id.shoppyProductDetailsFragment,
+            bundleOf("ID" to productId)
+        )
     }
 }
