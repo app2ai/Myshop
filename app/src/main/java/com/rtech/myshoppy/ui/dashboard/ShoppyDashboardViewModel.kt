@@ -13,16 +13,20 @@ class ShoppyDashboardViewModel : ViewModel() {
     private var _productsLiveData = MutableLiveData<List<ProductDetailsModel>>()
     val productsLiveData: LiveData<List<ProductDetailsModel>> = _productsLiveData
 
-    fun getAllProductsFromDb(context: Context){
+    private var _productLiveData = MutableLiveData<ProductDetailsModel>()
+    val productLiveData: LiveData<ProductDetailsModel> = _productLiveData
+
+    fun getAllProductsFromDb(context: Context) {
         viewModelScope.launch {
             val db = ShoppyRoomDatabase.getDbInstance(context, viewModelScope)
-            _productsLiveData.value =  db.productDao().getAllProducts()
+            _productsLiveData.value = db.productDao().getAllProducts()
         }
     }
-    fun getSelectedProductsFromDb(context: Context,productId:Int){
+
+    fun getSelectedProductsFromDb(context: Context, productId: Int) {
         viewModelScope.launch {
-            val db = ShoppyRoomDatabase.getDbInstance(context,viewModelScope)
-            
+            val db = ShoppyRoomDatabase.getDbInstance(context, viewModelScope)
+            _productLiveData.value = db.productDao().getSelectedProduct(productId)
         }
     }
 }

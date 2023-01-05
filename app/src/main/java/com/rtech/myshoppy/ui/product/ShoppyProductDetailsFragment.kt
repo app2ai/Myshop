@@ -21,14 +21,14 @@ class ShoppyProductDetailsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        print("Product ID is: ${arguments?.getInt("ID")}")
-        viewModel= ViewModelProvider(this).get(ShoppyDashboardViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(ShoppyDashboardViewModel::class.java)
+        viewModel.getSelectedProductsFromDb(requireContext(), arguments?.getInt("ID") ?: 0)
         observeData()
     }
 
     private fun observeData() {
-        viewModel.productsLiveData.observe(viewLifecycleOwner){
-
+        viewModel.productLiveData.observe(viewLifecycleOwner) { productData ->
+            // Data from DB
         }
     }
 }
