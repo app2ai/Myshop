@@ -48,5 +48,5 @@
     <fragment
         android:id="@+id/shoppyProductDetailsFragment"
         android:name="com.rtech.myshoppy.ui.product.ShoppyProductDetailsFragment"
-        android:label="ShoppyProductDetailsFragment" />
+        android:label="Product Details" />
 </navigation>

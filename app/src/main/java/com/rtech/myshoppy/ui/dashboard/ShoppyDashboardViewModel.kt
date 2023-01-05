@@ -19,4 +19,10 @@ class ShoppyDashboardViewModel : ViewModel() {
             _productsLiveData.value =  db.productDao().getAllProducts()
         }
     }
+    fun getSelectedProductsFromDb(context: Context,productId:Int){
+        viewModelScope.launch {
+            val db = ShoppyRoomDatabase.getDbInstance(context,viewModelScope)
+            
+        }
+    }
 }

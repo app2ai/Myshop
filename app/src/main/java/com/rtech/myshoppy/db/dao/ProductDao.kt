@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.rtech.myshoppy.db.entities.ProductDetailsModel
+import com.rtech.myshoppy.db.entities.UserDetailsModel
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -18,6 +19,11 @@ interface ProductDao {
     @Query("Select * from tblProduct")
     suspend fun getAllProducts(): List<ProductDetailsModel>
 
-    @Query("Select * from tblProduct where :productId = id")
+   /* @Query("Select * from tblProduct where :productId = id")
     suspend fun getSelectedProduct(productId: Int)
+
+    */
+    @Query("Select * from tblProduct where :productId = id")
+    suspend fun getSelectedProduct(productId: Int): ProductDetailsModel?
+
 }
