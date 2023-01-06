@@ -50,6 +50,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.shoppyRegisterFragment -> {
                     binding.shoppyBottomNavigationView.visibility = View.GONE
                 }
+                R.id.shoppyProductDetailsFragment -> {
+                    binding.shoppyBottomNavigationView.visibility = View.GONE
+                }
             }
         }
     }
