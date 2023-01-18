@@ -24,6 +24,10 @@ class ShoppyProductDetailsFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(ShoppyDashboardViewModel::class.java)
         viewModel.getSelectedProductsFromDb(requireContext(), arguments?.getInt("ID") ?: 0)
         observeData()
+
+        binding.btnAddToCart.setOnClickListener {
+            viewModel.addProductToCart(arguments?.getInt("ID") ?: 0, requireContext())
+        }
     }
 
     private fun observeData() {
