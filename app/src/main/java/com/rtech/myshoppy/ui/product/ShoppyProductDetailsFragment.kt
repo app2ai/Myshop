@@ -14,8 +14,10 @@ class ShoppyProductDetailsFragment : Fragment() {
     private lateinit var binding: FragmentShoppyProductDetailsBinding
     private lateinit var viewModel: ShoppyDashboardViewModel
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentShoppyProductDetailsBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -33,6 +35,12 @@ class ShoppyProductDetailsFragment : Fragment() {
     private fun observeData() {
         viewModel.productLiveData.observe(viewLifecycleOwner) { productData ->
             // Data from DB
+            binding.textName.text = productData.productName
+            binding.textDiscription.text = productData.productDesc
+            binding.textSellPrice.text = productData.sellingPrice.toString()
+            binding.textDiscount.text = productData.discount.toString()
+            binding.ratingProduct.rating = productData.rating.toFloat()
+
         }
     }
 }
