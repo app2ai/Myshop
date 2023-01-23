@@ -53,7 +53,7 @@ class ShoppyCartFragment : Fragment() {
 
     private fun setupRecyclerView(list: List<ProductAndCart>?) {
         binding.cartRecycleView.apply {
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
             //adapter = CartProductAdapter(list)
         }
     }
