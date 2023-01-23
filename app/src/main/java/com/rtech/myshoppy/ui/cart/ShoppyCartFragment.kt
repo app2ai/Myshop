@@ -10,7 +10,13 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.rtech.myshoppy.databinding.FragmentShoppyCartBinding
+import com.rtech.myshoppy.databinding.ShoppyCartProductcardBinding
+import com.rtech.myshoppy.db.entities.ProductAndCart
+import com.rtech.myshoppy.db.entities.ProductDetailsModel
+import com.rtech.myshoppy.ui.dashboard.Dashboard_ProductCardAdapter
 import com.rtech.myshoppy.ui.dashboard.ShoppyDashboardViewModel
 import kotlinx.coroutines.launch
 
@@ -18,8 +24,10 @@ class ShoppyCartFragment : Fragment() {
     private lateinit var binding: FragmentShoppyCartBinding
     private lateinit var viewModel: ShoppyDashboardViewModel
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentShoppyCartBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -34,10 +42,20 @@ class ShoppyCartFragment : Fragment() {
     private fun observeData() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.cartFlow.collect{
+                viewModel.cartFlow.collect {
                     Log.d("CART_TAG", "observeData: \n\n${it}")
+                    setupRecyclerView(it)
+
                 }
             }
         }
     }
+
+    private fun setupRecyclerView(list: List<ProductAndCart>?) {
+        binding.cartRecycleView.apply {
+            layoutManager = LinearLayoutManager(context)
+            //adapter = CartProductAdapter(list)
+        }
+    }
+
 }
