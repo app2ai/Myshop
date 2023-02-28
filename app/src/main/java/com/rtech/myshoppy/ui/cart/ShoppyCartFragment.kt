@@ -44,17 +44,25 @@ class ShoppyCartFragment : Fragment() {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.cartFlow.collect {
                     Log.d("CART_TAG", "observeData: \n\n${it}")
-                    setupRecyclerView(it)
-
+                    val ll = getCartList(it)
+                    setupRecyclerView(ll)
                 }
             }
         }
     }
 
-    private fun setupRecyclerView(list: List<ProductAndCart>?) {
+    private fun getCartList(ll: List<ProductAndCart>?): MutableList<ProductDetailsModel?> {
+        var newList = mutableListOf<ProductDetailsModel?>()
+        ll?.forEach {
+            if (it.cart != null) newList.add(it.product)
+        }
+        return newList
+    }
+
+    private fun setupRecyclerView(list: MutableList<ProductDetailsModel?>) {
         binding.cartRecycleView.apply {
             layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
-            //adapter = CartProductAdapter(list)
+            adapter = CartProductAdapter(list)
         }
     }
 

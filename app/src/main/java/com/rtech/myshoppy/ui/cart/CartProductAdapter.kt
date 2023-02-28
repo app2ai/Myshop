@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rtech.myshoppy.databinding.ShoppyCartProductcardBinding
 import com.rtech.myshoppy.db.entities.ProductDetailsModel
 
-class CartProductAdapter(var productDetailList: List<ProductDetailsModel>?) :
+class CartProductAdapter(var productDetailList: List<ProductDetailsModel?>) :
     RecyclerView.Adapter<CartProductAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -16,7 +16,7 @@ class CartProductAdapter(var productDetailList: List<ProductDetailsModel>?) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindItem(productDetailList!![position])
+        holder.bindItem(productDetailList[position]!!)
     }
 
     override fun getItemCount(): Int {
@@ -29,11 +29,8 @@ class CartProductAdapter(var productDetailList: List<ProductDetailsModel>?) :
             itemBinding.textName.text = productModel.productName
             itemBinding.ratingProduct.rating = (productModel.rating).toFloat()
             itemBinding.textSellPrice.text = productModel.sellingPrice.toString()
-            itemBinding.textDiscount.text=productModel.discount.toString()
-            itemBinding.textDiscription.text=productModel.productDesc
-
-
+            itemBinding.textDiscount.text = productModel.discount.toString()
+            itemBinding.textDiscription.text = productModel.productDesc
         }
     }
-
 }
