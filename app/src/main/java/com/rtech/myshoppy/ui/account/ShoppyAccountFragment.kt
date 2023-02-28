@@ -47,10 +47,10 @@ class ShoppyAccountFragment : Fragment() {
         viewModel.userLogoutLiveData.observe(viewLifecycleOwner) {
             if (it){
                 Toast.makeText(context, "User logout successfully", Toast.LENGTH_LONG).show()
+                checkIfUserSessionIsOverOrNot()
             } else {
                 Toast.makeText(context, "Oops, Logout failed", Toast.LENGTH_LONG).show()
             }
-            checkIfUserSessionIsOverOrNot()
         }
     }
 

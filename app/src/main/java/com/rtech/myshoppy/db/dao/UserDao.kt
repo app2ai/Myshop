@@ -20,4 +20,7 @@ interface UserDao {
 
     @Query("Update tblUser Set isLogin = 0 where id = :userId")
     suspend fun logoutUser(userId: Int): Int
+
+    @Query("Select * from tblUser where id = :uId")
+    suspend fun getUserDetails(uId: Int): UserDetailsModel
 }

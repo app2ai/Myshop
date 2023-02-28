@@ -45,6 +45,15 @@ class ShoppyLoginViewModel : ViewModel() {
             _userLogoutLiveData.value = affectedRows >= 1
         }
     }
+
+    fun getUserDetails(userId: Int, context:Context) {
+        viewModelScope.launch {
+            val db = ShoppyRoomDatabase.getDbInstance(context, this).userDao()
+            val sp = CachePref.getCacheInstance(context)
+            val dd = db.getUserDetails(CachePref.getUserIdFromCache(sp))
+
+        }
+    }
 }
 
 sealed class UserLoginState
