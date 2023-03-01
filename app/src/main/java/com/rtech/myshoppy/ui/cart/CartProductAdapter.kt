@@ -5,9 +5,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rtech.myshoppy.databinding.ShoppyCartProductcardBinding
 import com.rtech.myshoppy.db.entities.ProductDetailsModel
+import com.rtech.myshoppy.ui.dashboard.Dashboard_ProductCardAdapter
 
-class CartProductAdapter(var productDetailList: List<ProductDetailsModel?>) :
+class CartProductAdapter(
+    var productDetailList: List<ProductDetailsModel?>, var listener: ProductClickDeleteInterface
+) :
     RecyclerView.Adapter<CartProductAdapter.ViewHolder>() {
+    var mlistener: ProductClickDeleteInterface? = null
+
+    init {
+        mlistener = listener
+    }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v =
@@ -31,6 +40,19 @@ class CartProductAdapter(var productDetailList: List<ProductDetailsModel?>) :
             itemBinding.textSellPrice.text = productModel.sellingPrice.toString()
             itemBinding.textDiscount.text = productModel.discount.toString()
             itemBinding.textDiscription.text = productModel.productDesc
+
+            itemBinding.textRemove.setOnClickListener {
+                listener?.onDeleteIconClick(productModel.id)
+
+            }
+
+
         }
     }
+
+    interface ProductClickDeleteInterface {
+        fun onDeleteIconClick(productId: Int)
+    }
+
+
 }

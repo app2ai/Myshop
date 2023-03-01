@@ -1,10 +1,6 @@
 package com.rtech.myshoppy.db.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-import androidx.room.Transaction
+import androidx.room.*
 import com.rtech.myshoppy.db.entities.CartModel
 import com.rtech.myshoppy.db.entities.ProductAndCart
 import com.rtech.myshoppy.db.entities.ProductDetailsModel
@@ -31,4 +27,9 @@ interface ProductDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addProductToCart(products: CartModel)
+
+  /*  @Delete
+    suspend fun deleteProductToCart(cartModel: CartModel)
+
+   */
 }

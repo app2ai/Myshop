@@ -20,7 +20,7 @@ import com.rtech.myshoppy.ui.dashboard.Dashboard_ProductCardAdapter
 import com.rtech.myshoppy.ui.dashboard.ShoppyDashboardViewModel
 import kotlinx.coroutines.launch
 
-class ShoppyCartFragment : Fragment() {
+class ShoppyCartFragment : Fragment(),CartProductAdapter.ProductClickDeleteInterface {
     private lateinit var binding: FragmentShoppyCartBinding
     private lateinit var viewModel: ShoppyDashboardViewModel
 
@@ -62,8 +62,12 @@ class ShoppyCartFragment : Fragment() {
     private fun setupRecyclerView(list: MutableList<ProductDetailsModel?>) {
         binding.cartRecycleView.apply {
             layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
-            adapter = CartProductAdapter(list)
+            adapter = CartProductAdapter(list,this@ShoppyCartFragment)
         }
+    }
+
+    override fun onDeleteIconClick(productId: Int) {
+      //  viewModel.deleteProductToCart(productId=productId,context)
     }
 
 }

@@ -11,11 +11,13 @@ import androidx.navigation.fragment.findNavController
 import com.rtech.myshoppy.R
 import com.rtech.myshoppy.cache.CachePref
 import com.rtech.myshoppy.databinding.FragmentAccountBinding
+import com.rtech.myshoppy.db.entities.UserDetailsModel
 import com.rtech.myshoppy.ui.login.ShoppyLoginViewModel
 
 class ShoppyAccountFragment : Fragment() {
     private lateinit var binding: FragmentAccountBinding
     private lateinit var viewModel: ShoppyLoginViewModel
+    private lateinit var userDetailsModel: UserDetailsModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View {
@@ -60,6 +62,10 @@ class ShoppyAccountFragment : Fragment() {
         if (status > 0) {
             binding.txtLoginText.apply {
                 visibility = View.GONE
+                // name display
+                viewModel.userNameLiveData.observe(viewLifecycleOwner){
+                    binding.textName.text=userDetailsModel.uname
+                }
             }
         } else {
             binding.txtLoginText.apply {
