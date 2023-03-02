@@ -42,11 +42,8 @@ class CartProductAdapter(
             itemBinding.textDiscription.text = productModel.productDesc
 
             itemBinding.textRemove.setOnClickListener {
-                listener?.onDeleteIconClick(productModel.id)
-
+                listener.onDeleteIconClick(productModel.id)
             }
-
-
         }
     }
 

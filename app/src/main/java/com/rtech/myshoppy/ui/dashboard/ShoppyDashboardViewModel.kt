@@ -51,13 +51,10 @@ class ShoppyDashboardViewModel : ViewModel() {
             db.productDao().addProductToCart(CartModel(productId = productId))
         }
     }
-    /*
     fun deleteProductToCart(productId: Int, context: Context) {
         viewModelScope.launch {
             val db = ShoppyRoomDatabase.getDbInstance(context, this)
             db.productDao().deleteProductToCart(CartModel(productId = productId))
         }
     }
-
-     */
 }

@@ -67,7 +67,7 @@ class ShoppyCartFragment : Fragment(),CartProductAdapter.ProductClickDeleteInter
     }
 
     override fun onDeleteIconClick(productId: Int) {
-      //  viewModel.deleteProductToCart(productId=productId,context)
+        viewModel.deleteProductToCart(productId=productId, context = requireContext())
     }
 
 }

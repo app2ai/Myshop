@@ -54,6 +54,10 @@ class ShoppyAccountFragment : Fragment() {
                 Toast.makeText(context, "Oops, Logout failed", Toast.LENGTH_LONG).show()
             }
         }
+
+        viewModel.userNameLiveData.observe(viewLifecycleOwner){
+            binding.textName.text = "Welcome, $it"
+        }
     }
 
     private fun checkIfUserSessionIsOverOrNot() {
@@ -63,9 +67,7 @@ class ShoppyAccountFragment : Fragment() {
             binding.txtLoginText.apply {
                 visibility = View.GONE
                 // name display
-                viewModel.userNameLiveData.observe(viewLifecycleOwner){
-                    binding.textName.text=userDetailsModel.uname
-                }
+                viewModel.getUserDetails(status,requireContext())
             }
         } else {
             binding.txtLoginText.apply {
