@@ -21,8 +21,11 @@ class ShoppyDashboardViewModel : ViewModel() {
     private var _productLiveData = MutableLiveData<ProductDetailsModel>()
     val productLiveData: LiveData<ProductDetailsModel> = _productLiveData
 
-    private var _cartFlow = MutableStateFlow<List<ProductAndCart>?>(null)
-    val cartFlow: StateFlow<List<ProductAndCart>?> = _cartFlow
+    private var _cartFlow = MutableLiveData<List<ProductAndCart>?>()
+    val cartFlow: LiveData<List<ProductAndCart>?> = _cartFlow
+
+    private var _cartState = MutableLiveData<Boolean>()
+    val cartState: LiveData<Boolean> = _cartState
 
     fun getAllProductsFromDb(context: Context) {
         viewModelScope.launch {
@@ -54,7 +57,8 @@ class ShoppyDashboardViewModel : ViewModel() {
     fun deleteProductToCart(productId: Int, context: Context) {
         viewModelScope.launch {
             val db = ShoppyRoomDatabase.getDbInstance(context, this)
-            db.productDao().deleteProductToCart(CartModel(productId = productId))
+            db.productDao().deleteProductToCart(productId)
+            getCartProductsFromDb(context)
         }
     }
 }

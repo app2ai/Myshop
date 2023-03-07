@@ -1,5 +1,6 @@
 package com.rtech.myshoppy.ui.cart
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,16 +9,20 @@ import com.rtech.myshoppy.db.entities.ProductDetailsModel
 import com.rtech.myshoppy.ui.dashboard.Dashboard_ProductCardAdapter
 
 class CartProductAdapter(
-    var productDetailList: List<ProductDetailsModel?>, var listener: ProductClickDeleteInterface
+    var listener: ProductClickDeleteInterface
 ) :
     RecyclerView.Adapter<CartProductAdapter.ViewHolder>() {
     var mlistener: ProductClickDeleteInterface? = null
+    var productDetailList: MutableList<ProductDetailsModel?> = mutableListOf()
 
     init {
         mlistener = listener
     }
 
-
+    fun setDataList(mList: List<ProductDetailsModel?>) {
+        productDetailList.addAll(mList)
+        this.notifyDataSetChanged()
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v =
             ShoppyCartProductcardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -50,6 +55,4 @@ class CartProductAdapter(
     interface ProductClickDeleteInterface {
         fun onDeleteIconClick(productId: Int)
     }
-
-
 }

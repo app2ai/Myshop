@@ -28,7 +28,6 @@ interface ProductDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addProductToCart(products: CartModel)
 
-    @Delete
-    suspend fun deleteProductToCart(cartModel: CartModel)
-
+    @Query("Delete from tblCart where productId = :id")
+    suspend fun deleteProductToCart(id: Int)
 }

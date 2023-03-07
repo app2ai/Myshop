@@ -17,7 +17,6 @@ import com.rtech.myshoppy.ui.login.ShoppyLoginViewModel
 class ShoppyAccountFragment : Fragment() {
     private lateinit var binding: FragmentAccountBinding
     private lateinit var viewModel: ShoppyLoginViewModel
-    private lateinit var userDetailsModel: UserDetailsModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View {
@@ -65,7 +64,7 @@ class ShoppyAccountFragment : Fragment() {
         val status = CachePref.getUserIdFromCache(sp)
         if (status > 0) {
             binding.txtLoginText.apply {
-                visibility = View.GONE
+                visibility = View.VISIBLE
                 // name display
                 viewModel.getUserDetails(status,requireContext())
             }

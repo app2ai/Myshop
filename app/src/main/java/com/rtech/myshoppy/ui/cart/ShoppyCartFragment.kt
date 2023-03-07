@@ -20,9 +20,10 @@ import com.rtech.myshoppy.ui.dashboard.Dashboard_ProductCardAdapter
 import com.rtech.myshoppy.ui.dashboard.ShoppyDashboardViewModel
 import kotlinx.coroutines.launch
 
-class ShoppyCartFragment : Fragment(),CartProductAdapter.ProductClickDeleteInterface {
+class ShoppyCartFragment : Fragment(), CartProductAdapter.ProductClickDeleteInterface {
     private lateinit var binding: FragmentShoppyCartBinding
     private lateinit var viewModel: ShoppyDashboardViewModel
+    private lateinit var adapter: CartProductAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,19 +36,16 @@ class ShoppyCartFragment : Fragment(),CartProductAdapter.ProductClickDeleteInter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(ShoppyDashboardViewModel::class.java)
+        setupRecyclerView()
         viewModel.getCartProductsFromDb(requireContext())
         observeData()
     }
 
     private fun observeData() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.cartFlow.collect {
-                    Log.d("CART_TAG", "observeData: \n\n${it}")
-                    val ll = getCartList(it)
-                    setupRecyclerView(ll)
-                }
-            }
+        viewModel.cartFlow.observe(viewLifecycleOwner) {
+            Log.d("CART_TAG", "observeData: \n\n${it}")
+            val ll = getCartList(it)
+            adapter.setDataList(ll)
         }
     }
 
@@ -59,15 +57,15 @@ class ShoppyCartFragment : Fragment(),CartProductAdapter.ProductClickDeleteInter
         return newList
     }
 
-    private fun setupRecyclerView(list: MutableList<ProductDetailsModel?>) {
+    private fun setupRecyclerView() {
+        adapter = CartProductAdapter(this@ShoppyCartFragment)
         binding.cartRecycleView.apply {
-            layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
-            adapter = CartProductAdapter(list,this@ShoppyCartFragment)
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            adapter = adapter
         }
     }
 
     override fun onDeleteIconClick(productId: Int) {
-        viewModel.deleteProductToCart(productId=productId, context = requireContext())
+        viewModel.deleteProductToCart(productId = productId, context = requireContext())
     }
-
 }
