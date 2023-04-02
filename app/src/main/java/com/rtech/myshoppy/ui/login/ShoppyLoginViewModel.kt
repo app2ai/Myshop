@@ -18,6 +18,9 @@ class ShoppyLoginViewModel : ViewModel() {
     private var _userLogoutLiveData = SingleLiveDataEvent<Boolean>()
     val userLogoutLiveData: LiveData<Boolean> = _userLogoutLiveData
 
+    private var _userNameLiveData = MutableLiveData<String>()
+    val userNameLiveData: LiveData<String> = _userNameLiveData
+
     fun loginUserFromDb(username: String, password: String, context: Context) {
         viewModelScope.launch {
             val db = ShoppyRoomDatabase.getDbInstance(context, this).userDao()
@@ -43,6 +46,14 @@ class ShoppyLoginViewModel : ViewModel() {
             val sp = CachePref.getCacheInstance(context)
             val affectedRows = db.logoutUser(CachePref.getUserIdFromCache(sp))
             _userLogoutLiveData.value = affectedRows >= 1
+        }
+    }
+
+    fun getUserDetails(uId: Int, context:Context) {
+        viewModelScope.launch {
+            val db = ShoppyRoomDatabase.getDbInstance(context, this).userDao()
+            val dd = db.getUserDetails(uId)
+            _userNameLiveData.value = dd.uname
         }
     }
 }

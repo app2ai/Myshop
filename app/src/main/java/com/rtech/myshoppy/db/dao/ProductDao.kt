@@ -1,9 +1,8 @@
 package com.rtech.myshoppy.db.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
+import com.rtech.myshoppy.db.entities.CartModel
+import com.rtech.myshoppy.db.entities.ProductAndCart
 import com.rtech.myshoppy.db.entities.ProductDetailsModel
 import com.rtech.myshoppy.db.entities.UserDetailsModel
 import kotlinx.coroutines.flow.Flow
@@ -22,4 +21,13 @@ interface ProductDao {
     @Query("Select * from tblProduct where :productId = id")
     suspend fun getSelectedProduct(productId: Int): ProductDetailsModel?
 
+    @Transaction
+    @Query("Select * from tblProduct")
+    suspend fun getProductsInCart(): List<ProductAndCart>
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun addProductToCart(products: CartModel)
+
+    @Query("Delete from tblCart where productId = :id")
+    suspend fun deleteProductToCart(id: Int)
 }

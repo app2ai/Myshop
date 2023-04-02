@@ -9,12 +9,13 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.rtech.myshoppy.db.dao.ProductDao
 import com.rtech.myshoppy.db.dao.UserDao
+import com.rtech.myshoppy.db.entities.CartModel
 import com.rtech.myshoppy.db.entities.ProductDetailsModel
 import com.rtech.myshoppy.db.entities.UserDetailsModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-@Database(entities = [UserDetailsModel::class, ProductDetailsModel::class], version = 1, exportSchema = false)
+@Database(entities = [UserDetailsModel::class, ProductDetailsModel::class, CartModel::class], version = 1, exportSchema = false)
 abstract class ShoppyRoomDatabase : RoomDatabase() {
 
     abstract fun userDao(): UserDao

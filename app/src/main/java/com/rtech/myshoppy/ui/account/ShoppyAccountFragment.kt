@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.rtech.myshoppy.R
 import com.rtech.myshoppy.cache.CachePref
 import com.rtech.myshoppy.databinding.FragmentAccountBinding
+import com.rtech.myshoppy.db.entities.UserDetailsModel
 import com.rtech.myshoppy.ui.login.ShoppyLoginViewModel
 
 class ShoppyAccountFragment : Fragment() {
@@ -47,10 +48,14 @@ class ShoppyAccountFragment : Fragment() {
         viewModel.userLogoutLiveData.observe(viewLifecycleOwner) {
             if (it){
                 Toast.makeText(context, "User logout successfully", Toast.LENGTH_LONG).show()
+                checkIfUserSessionIsOverOrNot()
             } else {
                 Toast.makeText(context, "Oops, Logout failed", Toast.LENGTH_LONG).show()
             }
-            checkIfUserSessionIsOverOrNot()
+        }
+
+        viewModel.userNameLiveData.observe(viewLifecycleOwner){
+            binding.textName.text = "Welcome, $it"
         }
     }
 
@@ -59,7 +64,9 @@ class ShoppyAccountFragment : Fragment() {
         val status = CachePref.getUserIdFromCache(sp)
         if (status > 0) {
             binding.txtLoginText.apply {
-                visibility = View.GONE
+                visibility = View.VISIBLE
+                // name display
+                viewModel.getUserDetails(status,requireContext())
             }
         } else {
             binding.txtLoginText.apply {
